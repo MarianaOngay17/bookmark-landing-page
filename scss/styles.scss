@@ -1,0 +1,7 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+@use 'sass:color';
+
+body{
+    font-family: v.$fuente_principal;
+}
