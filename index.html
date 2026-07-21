@@ -37,13 +37,54 @@
                 <li><a href="#">Pricing</a></li>
                 <li><a href="#">Contact</a></li>
               </ul><!--.header__links-->
+
+              <button type="button" class="header__login">Login</button>
             </nav> <!--.heder__nav-->
 
           </div> <!--.header__menu-->
 
-          <button type="button" class="header__login">Login</button>
-
       </header>
+
+      <div class="menu" 
+        id="main-navigation" 
+        role="dialog" 
+        aria-modal="true" 
+        aria-label="Menú de navegación móvil"
+      >
+
+        <div class="menu__container">
+          <div class="menu__header">
+            <a href="/" aria-label="Página de Room" class="header__logo--menu">
+              <img src="/images/logo-bookmark.svg" alt="Logo Bookmark">
+            </a>
+
+            <button type="button" 
+                class="menu__close-icon" 
+                aria-label="Cerrar menú">
+              <img src="/images/icon-close.svg" alt="" aria-hidden="true">
+            </button>
+          </div>
+
+          <nav class="menu__nav">
+            <ul class="menu__links">
+              <li><a href="#">Features</a></li>
+              <li><a href="#">Pricing</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul> <!--.menu__links-->
+            <button type="button" class="header__login header__login--menu">Login</button>
+          </nav> <!--.menu__nav-->
+
+          <div class="menu__media">
+            <a href="/" aria-label="Página de Facebook" class="footer__media--fb">
+              <img src="/images/icon-facebook.svg" alt="Logo Facebook">
+            </a>
+            <a href="/" aria-label="Página de Twitter" class="footer__media--fb">
+              <img src="/images/icon-twitter.svg" alt="Logo Twitter">
+            </a>
+          </div>
+
+        </div> <!--.menu__container-->
+      </div> <!--.menu-->
 
       <section class="principal">
 
@@ -58,7 +99,9 @@
           </div>
        </div>
 
-       <img src="images/illustration-hero.svg" alt="Illustration Hero" class="principal__image">
+       <div class="principal__image">
+          <img src="images/illustration-hero.svg" alt="Illustration Hero" >
+       </div>
 
       </section> <!--.principal-->
 
@@ -76,7 +119,10 @@
         </div>
 
         <div class="features__container">
-          <img class="features__image" src="images/illustration-features-tab-1.svg" alt="Illustration Features">
+          <div class="features__image">
+            <img src="images/illustration-features-tab-1.svg" alt="Illustration Features">
+          </div>
+
           <div class="features__info">
             <h3 class="features__info-title">Bookmark in one click</h3>
             <p class="features__info-description"> Organize your bookmarks however you like. Our simple drag-and-drop interface 
@@ -263,6 +309,6 @@
 
   </main>
 
-
+  <script src="js/main.js"></script>
 </body>
 </html>
