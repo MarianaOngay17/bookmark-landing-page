@@ -31,3 +31,45 @@
     }
 }
 
+@mixin BlueButton {
+    appearance: none;
+    -moz-appearance: none;
+    font-family: v.$fuente_principal;
+    border: none;
+    padding: 1rem;
+    border-radius: 5px;
+    font-weight: v.$medium;
+    font-size: 0.9rem;
+    cursor: pointer;
+
+    background-color: v.$Blue600;
+    color: v.$White;
+
+    &:hover{
+        background-color: v.$White;
+        color: v.$Blue600;
+        border: 2px solid v.$Blue600;
+    }
+}
+
+@mixin RedButton {
+    appearance: none;
+    -moz-appearance: none;
+    font-family: v.$fuente_principal;
+    text-transform: uppercase;
+    font-weight: v.$medium;
+    letter-spacing: 1px;
+    background-color: v.$Red400;
+    color: v.$White;
+    border: none;
+    padding: 0.6rem 2.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &:hover{
+        background-color: v.$White;
+        border: 2px solid v.$Red400;
+        color: v.$Red400;
+    }
+}
+
