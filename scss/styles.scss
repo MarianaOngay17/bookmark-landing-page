@@ -4,6 +4,7 @@
 
 body{
     font-family: v.$fuente_principal;
+    margin: 0;
 }
 
 .header{
@@ -19,8 +20,26 @@ body{
     }
 
     &__logo{
+        
+        &:focus{
+            outline: 2px solid v.$Blue600;
+            outline-offset: 4px;
+        }
+
         &--menu{
-          filter: grayscale(100%) invert(100%) contrast(1000%) brightness(1000%);
+            svg {
+                > g > path:first-child {
+                    fill: v.$White; 
+                }
+
+                circle {
+                    fill: v.$White; 
+                }
+
+                g g path {
+                    fill: v.$Blue950; 
+                }
+            }
         }
     }
     
@@ -39,7 +58,7 @@ body{
         }
 
         &:focus{
-            outline: 1px solid v.$Red400;
+            outline: 2px solid v.$Red400;
             outline-offset: 4px;
         }
 
@@ -455,8 +474,14 @@ body{
             transition: color 0.3s ease;
         }
 
-        &:hover {
+        &:hover,
+        &:focus {
             color: v.$Red400; 
+        }
+
+        &:focus{
+            outline: 2px solid v.$Red400;
+            outline-offset: -15px;
         }
 
         &--active {
@@ -735,6 +760,362 @@ body{
             width: 500px;
         }
     }
+
+    &__questions{
+        width: 350px;
+        padding: 1rem;
+
+        @include m.lessThanMobile{
+            width: auto;
+        }
+        @include m.betweenMobileTablet{
+            width: 450px;
+        }
+        @include m.tablet{
+            width: 550px;
+        }
+    }
+
+    &__question {
+        summary::-webkit-details-marker { display: none; }
+        list-style: none;
+        
+        &[open] {
+            .faqs__icon { 
+                transform: rotate(180deg);
+                filter: brightness(0) saturate(100%) invert(46%) sepia(82%) saturate(2285%) hue-rotate(330deg) brightness(101%) contrast(97%);
+            }
+            
+            .faqs__answer {
+                animation: slideDown 0.4s ease-out forwards;
+            }
+        }
+    
+    }
+
+    
+    &__question-title{
+        
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        
+        color: v.$Blue950;
+       
+        font-size: 0.9rem;
+        outline: none;
+        cursor: pointer;   
+        
+        h3{
+            font-weight: v.$regular;
+        }
+    
+        &:hover{
+            color: v.$Red400;
+        }
+
+        &:focus-visible .faqs__icons {
+            outline: 2px solid v.$Red400; 
+            outline-offset: 5px;
+            border-radius: 5px;
+        }
+
+        &:focus-visible{
+            color: v.$Red400;
+        }
+
+    }
+
+    &__icon{
+        transition: transform 0.3s ease, filter 0.3s ease;
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+    &__answer{
+        color: color.adjust(v.$Grey600, $lightness: 20%);
+        font-size: 0.9rem;
+        line-height: 2;
+        overflow: hidden;
+    }
+
+    &__button{
+        @include m.BlueButton;
+        margin-top: 2rem;
+    }
+}
+
+.contact{
+    background-color: v.$Blue600;
+    color: v.$White;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    padding: 1.5rem;
+
+    &__description{
+        margin: 0;
+        margin-top: 2rem;
+        letter-spacing: 5px;
+        line-height: 3;
+        font-size: 0.8rem;
+        font-weight: v.$medium;
+        text-transform: uppercase;
+    }
+
+    &__title{
+        margin: 0.5rem;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: v.$medium;
+
+        @include m.betweenMobileTablet{
+            font-size: 1.8rem;
+            width: 450px;
+        }
+    }
+
+    &__form{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        margin-top: 2rem;
+
+        @include m.betweenMobileTablet{
+            display: grid;
+            grid-template-columns: 70% 30%;
+            width: 400px;
+            margin-top: 1rem;
+            padding-bottom: 3rem;
+        }
+    }
+
+    &__form-group {
+        position: relative;
+        width: 100%;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+
+        &--error {
+            background-color: v.$Red400; 
+            padding: 2px; 
+
+            .contact__input {
+                border-color: transparent;
+            }
+
+            .contact__error-icon,
+            .contact__error-message {
+                display: block;
+            }
+        }
+    }
+
+    &__input{
+        appearance: none;
+        -moz-appearance: none;
+        font-family: v.$fuente_principal;
+        width: 100%;
+        height: 48px;
+        border-radius: 5px;
+        border: 2px solid transparent;
+        padding: 0 1.5rem;
+        color: v.$Grey600;
+        font-size: 0.9rem;
+        box-sizing: border-box;
+
+        &:focus{
+            outline: 2px solid v.$Red400;
+            outline-offset: 4px
+        }
+    }
+
+    &__error-icon {
+        display: none; 
+        position: absolute;
+        right: 15px;
+        top: 14px; 
+        pointer-events: none;
+    }
+
+    &__error-message {
+        display: none; 
+        color: v.$White;
+        font-size: 0.65rem;
+        font-style: italic;
+        font-weight: v.$medium;
+        padding: 0.3rem 0.75rem;
+        text-align: left;
+    }
+
+    &__button{
+        @include m.RedButton;
+        text-transform: none;
+        padding: 1rem;
+        height: 48px;
+    }
+}
+
+.footer{
+    background-color: v.$Blue950;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    
+    padding: 2rem;
+    padding-bottom: 0;
+
+    color: v.$White;
+
+    @include m.betweenMobileTablet{
+        display: block;
+        padding: 1rem;
+    }
+
+    &__logo{
+        &:focus{
+            outline: 2px solid v.$Blue600;
+            outline-offset: 4px;
+        }
+        path:first-child {
+            fill: v.$White; 
+        }
+    }
+
+    &__container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+
+        @include m.betweenMobileTablet{
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+     &__nav{
+        display: flex;
+        align-items: center;
+        margin: 0.8rem 0;
+    }
+
+    ul li a {
+        text-decoration: none;
+        font-size: 0.9rem;
+        color: v.$White;
+        position: relative; 
+        text-transform: uppercase;
+        letter-spacing: 1px;
+
+        &:hover,
+        &:focus{
+            color: v.$Red400;
+        }
+
+        &:focus{
+            outline: none;
+        }
+    }
+
+    &__links{
+
+        list-style: none; 
+        padding: 0;       
+        margin: 0;  
+        
+        li{
+            margin: 1.8rem;
+            text-align: center;
+
+        }
+        
+        @include m.betweenMobileTablet{
+            display: flex;
+            gap: 2rem;
+
+            li{
+                margin: 0;
+            }
+        }
+
+    }
+
+    &__media{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+
+        &--fb,
+        &--tw{
+
+            svg path {
+                transition: fill 0.3s ease; 
+            }
+
+            &:hover,
+            &:focus {
+                svg path {
+                    fill: v.$Red400; 
+                }
+            }
+
+            &:focus{
+                outline: none;
+            }
+        }
+
+        
+    }
+}
+
+.attribution{
+    text-align: center;
+    font-size: 0.9rem;
+    color: color.adjust(v.$White, $lightness: -50%);
+    margin: 0;
+    padding: 0.5rem;
+    font-family: v.$fuente_principal;
+
+    @include m.betweenMobileTablet{
+        padding: 0;
+        margin-top: 0.5rem;
+    }
+
+    a {
+        color: color.adjust(v.$Blue950, $lightness: 30%);
+
+        &:focus{
+            outline: 2px solid v.$Blue600;
+            outline-offset: 2px;
+        }
+    }
+}
+
+
+
+@keyframes slideDown {
+  from { 
+    opacity: 0; 
+    transform: translateY(-15px); 
+    max-height: 0; 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+    max-height: 200px; 
+  }
 }
 
 body:has(.is-active)::after {

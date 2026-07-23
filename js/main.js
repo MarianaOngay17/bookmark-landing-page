@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', async function(){
    menu();
    features();
+   contact();
 });
 
 
@@ -66,4 +67,25 @@ function changeFeaturesInfo(tab){
         description.classList.remove('fade-out');
 
     }, 300);
+}
+
+function contact(){
+    const form = document.querySelector('.contact__form');
+    const inputEmail = document.querySelector('.contact__input');
+    const formGroup = document.querySelector('.contact__form-group');
+
+    const validateEmail = (email) => {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    };
+
+    form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    if (!validateEmail(inputEmail.value)) {
+        formGroup.classList.add('contact__form-group--error');
+    } else {
+        formGroup.classList.remove('contact__form-group--error');
+    }
+    });
 }

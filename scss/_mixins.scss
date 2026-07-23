@@ -45,10 +45,16 @@
     background-color: v.$Blue600;
     color: v.$White;
 
-    &:hover{
+    &:hover,
+    &:focus{
         background-color: v.$White;
         color: v.$Blue600;
         border: 2px solid v.$Blue600;
+    }
+
+    &:focus{
+        outline: 2px solid v.$Blue600;
+        outline-offset: 4px;
     }
 }
 
@@ -66,10 +72,16 @@
     border-radius: 8px;
     cursor: pointer;
 
-    &:hover{
+    &:hover,
+    &:focus{
         background-color: v.$White;
         border: 2px solid v.$Red400;
         color: v.$Red400;
+    }
+
+     &:focus{
+        outline: 2px solid v.$Red400;
+        outline-offset: 4px;
     }
 }
 
